@@ -2,31 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Bespoke</title>
+  <title>Gafete del empleado</title>
 </head>
 <body>
 
-<h1 id="nombre">Nombre del empleado</h1>
-<p id="puesto">Puesto</p>
+  <h2 id="nombre">Nombre</h2>
 
-<p>
-  <a id="web" href="#" target="_blank">Dahua Mexico</a>
-</p>
+  <p><strong>Puesto:</strong> <span id="puesto"></span></p>
+  <p><strong>Edad:</strong> <span id="edad"></span></p>
+  <p><strong>Seguro Social:</strong> <span id="seguro"></span></p>
+  <p><strong>Página web:</strong> 
+    <a id="web" href="#" target="_blank"></a>
+  </p>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
+  <script>
+    // Leer los datos que vienen en la URL
+    const params = new URLSearchParams(window.location.search);
 
-  const nombre = params.get("nombre") || "Empleado";
-  const puesto = params.get("puesto") || "Área";
-  const web = params.get("Dahua Mexico") || "https://www.dahuasecurity.com/mx";
+    // Obtener cada dato
+    const nombre = params.get("nombre");
+    const puesto = params.get("puesto");
+    const edad = params.get("edad");
+    const seguro = params.get("seguro");
+    const web = params.get("web");
 
-  document.getElementById("nombre").textContent = nombre;
-  document.getElementById("puesto").textContent = puesto;
+    // Colocarlos en la página
+    document.getElementById("nombre").textContent = nombre || "Sin nombre";
+    document.getElementById("puesto").textContent = puesto || "Sin puesto";
+    document.getElementById("edad").textContent = edad || "Sin edad";
+    document.getElementById("seguro").textContent = seguro || "Sin dato";
 
-  const webLink = document.getElementById("web");
-  webLink.href = web;
-  webLink.textContent = web.replace("https://", "");
-</script>
+    // Página web
+    const webLink = document.getElementById("https://www.dahuasecurity.com/mx");
+    if (web) {
+      webLink.href = web;
+      webLink.textContent = web.replace("Dahu Mexico");
+    } else {
+      webLink.textContent = "Sin página";
+    }
+  </script>
 
 </body>
 </html>
