@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gafete digital</title>
+</head>
 <body>
 
-<h2>Benjamin Piña</h2>
-<p>Sistemas</p>
+<h2 id="nombre">Nombre del empleado</h2>
+<p id="puesto">Puesto</p>
 
 <p>
-26 años<br>
-<a href="https://www.dahuasecurity.com/mx">Dahua Mexico</a>
+  <a id="web" href="#" target="_blank">www.empresa.com</a>
 </p>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const nombre = params.get("nombre") || "Empleado";
+  const puesto = params.get("puesto") || "Área";
+  const web = params.get("web") || "https://www.dahuasecurity.com/mx";
+
+  document.getElementById("nombre").textContent = nombre;
+  document.getElementById("puesto").textContent = puesto;
+
+  const webLink = document.getElementById("web");
+  webLink.href = web;
+  webLink.textContent = web.replace("https://", "");
+</script>
 
 </body>
 </html>
