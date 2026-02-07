@@ -3,43 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Gafete del empleado</title>
+
+  <style>
+    /* Estilo general del fondo */
+    body{
+      font-family: Arial, sans-serif; /* Tipo de letra */
+      background-color: #e9e9e9;      /* Color gris claro */
+      display: flex;                  /* Para centrar */
+      justify-content: center;        /* Centrado horizontal */
+      align-items: center;            /* Centrado vertical */
+      height: 100vh;                  /* Altura completa de pantalla */
+    }
+
+    /* Diseño de la tarjeta */
+    .gafete{
+      background-color: white;
+      width: 260px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2{
+      margin-bottom: 10px;
+    }
+
+    a{
+      text-decoration: none;
+      color: blue;
+    }
+
+    a:hover{
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-  <h2 id="nombre">Nombre</h2>
+  <!-- Contenedor principal del gafete -->
+  <div class="gafete">
 
-  <p><strong>Puesto:</strong> <span id="puesto"></span></p>
-  <p><strong>Edad:</strong> <span id="edad"></span></p>
-  <p><strong>Seguro Social:</strong> <span id="seguro"></span></p>
-  <p><strong>Página web:</strong> 
-    <a id="web" href="#" target="_blank"></a>
-  </p>
+    <!-- Aquí se mostrará el nombre -->
+    <h2 id="nombre">Nombre</h2>
+
+    <!-- Información del empleado -->
+    <p><strong>Puesto:</strong> <span id="puesto"></span></p>
+    <p><strong>Edad:</strong> <span id="edad"></span></p>
+
+    <!-- Link fijo de la empresa (NO cambia) -->
+    <p>
+      <strong>Web:</strong>
+      <a id="web" href="https://www.dahuasecurity.com/mx" target="_blank">
+        dahua mexico 
+      </a>
+    </p>
+
+  </div>
 
   <script>
-    // Leer los datos que vienen en la URL
+    // Esta parte sirve para leer los datos que vienen en la URL
+    // Ejemplo: ?nombre=Benjamin&puesto=Ingeniero&edad=22
     const params = new URLSearchParams(window.location.search);
 
-    // Obtener cada dato
+    // Aquí guardamos los datos que vienen en la URL
     const nombre = params.get("nombre");
     const puesto = params.get("puesto");
     const edad = params.get("edad");
-    const seguro = params.get("seguro");
-    const web = params.get("web");
 
-    // Colocarlos en la página
+    // Aquí colocamos los datos dentro del HTML
+    // Si no vienen datos, ponemos un texto por defecto
     document.getElementById("nombre").textContent = nombre || "Sin nombre";
     document.getElementById("puesto").textContent = puesto || "Sin puesto";
     document.getElementById("edad").textContent = edad || "Sin edad";
-    document.getElementById("seguro").textContent = seguro || "Sin dato";
 
-    // Página web
-    const webLink = document.getElementById("https://www.dahuasecurity.com/mx");
-    if (web) {
-      webLink.href = web;
-      webLink.textContent = web.replace("Dahu Mexico");
-    } else {
-      webLink.textContent = "Sin página";
-    }
   </script>
 
 </body>
